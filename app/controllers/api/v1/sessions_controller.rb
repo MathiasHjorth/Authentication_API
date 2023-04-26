@@ -3,14 +3,13 @@ class Api::V1::SessionsController < Devise::SessionsController
   include JwtHelper
   respond_to :json
 
-
-  #get
-  # testing purposes
-
   #POST
   # login
   def create
-    super
+    self.resource = warden.authenticate!(auth_options)
+    sign_in(resource_name, resource)
+    yield resource if block_given?
+    respond_with resource, location: after_sign_in_path_for(resource)
   end
 
   #DELETE
@@ -18,7 +17,7 @@ class Api::V1::SessionsController < Devise::SessionsController
   def destroy
     #We need to provide a user which we can extract from the Authorization request header.
     # Default behaviour of destroy is to sign out all users in the system at once, which is not what we want.
-    # By doing this, we allow other users to remain active, and only logout the one making the call.
+    # By doing this, we allow other users to remain active, and only logout the one making the request.
 
     # The sign_out method automatically fires our JTIMatcher strategy, and changes the value of the jti column on the user.
     # Therefore it's essential to call.
@@ -51,7 +50,7 @@ class Api::V1::SessionsController < Devise::SessionsController
   protected
 
   def sign_in_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email,:password)
   end
 
 end

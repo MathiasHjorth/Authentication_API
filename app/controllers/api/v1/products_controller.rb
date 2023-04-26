@@ -2,11 +2,10 @@ class Api::V1::ProductsController < ApplicationController
   include JwtHelper
   before_action :authenticate_user!
 
-  #POST
-  # create product
-  def show
-    user = get_user_from_token
-    render json: user
+  #GET
+  # get all products
+  def index
+    render json: Product.all, status:200
   end
 
 

@@ -26,8 +26,8 @@ development:
   database: authentication_api_development
   host: localhost
   port: 5432
-  user: rails_user
-  password: 1234
+  user:  <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -62,6 +62,10 @@ development:
 test:
   <<: *default
   database: authentication_api_test
+  host: localhost
+  port: 5432
+  user: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
