@@ -6,22 +6,21 @@ class Api::V1::ShoppingBasketsController < ApplicationController
   #GET
   # gets the user's shopping basket
   def show
+    @shopping_basket = ShoppingBasket.eager_load(:product).where(:user_id => current_user.id)
 
+    render json: @shopping_basket.as_json(include: :product, only: :quantity), status: 200
   end
 
   #POST
   # adds product to shopping basket
   def create
-
-    @current_user_id = get_user_id_from_token
-
-    @basket_item = ShoppingBasket.new({ user_id: @current_user_id, product_id: basket_item_params[:product_id], quantity: basket_item_params[:quantity]})
+    @basket_item = ShoppingBasket.new({ user_id: current_user.id, product_id: basket_item_params[:product_id], quantity: basket_item_params[:quantity]})
 
     if in_basket?(@basket_item)
-      @fetched_item = ShoppingBasket
+      @fetched_item = ShoppingBasket.find_by(user_id: current_user.id, product_id: @basket_item[:product_id])
       @fetched_item.update(:quantity => @fetched_item.quantity += @basket_item[:quantity])
 
-      render json: {status: 200, message: 'Product is already in basket. Product quantity has been incremented'}, status: 200 and return
+      render json: {status: 200, message: 'Product was in shopping basket already. Product quantity was incremented accordingly'}, status: 200 and return
     end
 
     if @basket_item.save
@@ -51,8 +50,8 @@ class Api::V1::ShoppingBasketsController < ApplicationController
     params.require(:data).permit(:product_id,:quantity)
   end
 
+  #Checks if the product is already in the basket for the user in question
   def in_basket?(basket_item)
-    #checking if the product is already in the basket for the user in question
     ShoppingBasket.exists?(user_id: basket_item[:user_id], product_id: basket_item[:product_id])
   end
 

@@ -45,7 +45,7 @@ Devise.setup do |config|
         ['GET', %r{^/logout$}],
       ]
       #setting expiration time of our JWT tokens
-      jwt.expiration_time = 10.minutes.to_i
+      jwt.expiration_time = 60.minutes.to_i
     end
   end
 

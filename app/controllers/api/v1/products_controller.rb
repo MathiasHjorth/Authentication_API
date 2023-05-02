@@ -4,7 +4,7 @@ class Api::V1::ProductsController < ApplicationController
   respond_to :json
 
   #GET
-  # get all products
+  # gets all products
   def index
     #as fetching all products is an expensive operation
     # i'm implementing low-level caching to cache the response, using memoryStore as the storage facility
