@@ -1,6 +1,7 @@
 class Api::V1::ProductsController < ApplicationController
   include JwtHelper
   before_action :authenticate_user!
+  respond_to :json
 
   #GET
   # get all products
@@ -13,9 +14,6 @@ class Api::V1::ProductsController < ApplicationController
     # allows for invalidating the cache, so that when updates are made to the products,
     # a new cache is generated to reflect the update, and keep the cache from going stale
 
-    #i have added an index database side on the updated_at column, to speed up this query and retain some of
-    # the performance gain of the caching
-    # Could also do a vertical partition? notes to self...
     last_modified_product = Product.order(:updated_at).last
     last_modified_str = last_modified_product.updated_at.utc.to_s
 
