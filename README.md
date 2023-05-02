@@ -1,6 +1,6 @@
 # Authentication_API V. 1.0
 This is a minimal backend API project imitating a shopping app with user authentication capabilities. 
-The project is an answer to Pentia Mobile's hiring test for backend developers. It includes many of the features asked for in the test, but also leaves out some along with providing some that were not asked for.
+The project is moderately aimed at Pentia Mobile's hiring test for backend developers. It includes many of the features asked for in the test, but also leaves out some along with providing some that weren't a part of the assignment.
 This is because the project was written under my 4th semester at UCL, and reservations for what i found most relevant for my exams took precedence over what the hiring test wanted.
 
 * Ruby version
