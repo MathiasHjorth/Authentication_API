@@ -5,6 +5,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
   end
 
+  test "should receive an authentication token on successful sign up" do
+
+  end
+
   test "should not register a user if password length < 6" do
     post '/signup', params:{
       user:

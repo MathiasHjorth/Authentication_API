@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # if they don't match, that means the token has been revoked, and access will be denied. Vice versa.
   # Tokens are dispatched on registrations by default and on login, as defined in the Devise initializer.
   # On revocation the jti value for a user will be updated, this is handled automatically by the 'devise-jwt' gem.
-
+  has_one :shopping_basket
 
   devise :database_authenticatable, :registerable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self

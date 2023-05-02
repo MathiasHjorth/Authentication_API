@@ -13,5 +13,5 @@ Rails.application.routes.draw do
              controllers: {sessions: 'api/v1/sessions', registrations: 'api/v1/users'}
 
   get 'api/v1/products', to: 'api/v1/products#index'
-
+  post 'api/v1/shopping_baskets', to: 'api/v1/shopping_baskets#create'
 end
