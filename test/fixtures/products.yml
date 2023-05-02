@@ -3,4 +3,6 @@
 <% 5.times do |n| %>
       prod<%= n %>:
             name: <%="prod#{n}"%>
+            description: <%="Mmm.."%>
+            price: <%="#{Random.rand(100.0)}"%>
 <% end %>
