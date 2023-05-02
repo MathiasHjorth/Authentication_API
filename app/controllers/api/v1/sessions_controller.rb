@@ -20,9 +20,7 @@ class Api::V1::SessionsController < Devise::SessionsController
     # By doing this, we allow other users to remain active, and only logout the one making the request.
 
     # The sign_out method automatically fires our JTIMatcher strategy, and changes the value of the jti column on the user.
-    # Therefore it's essential to call.
-    user_payload = get_user_from_token
-    user = User.where(id: user_payload[0]['sub'].to_i)
+    user = User.where(id: get_user_id_from_token)
     sign_out(user)
   end
 

@@ -10,6 +10,7 @@ Things you may want to cover:
 * System dependencies
 
 * Configuration
+  It might be necessary to run the command rails dev:cache, to re-enable caching in development mode.
 
 * Database creation
 

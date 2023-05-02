@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   include Devise::JWT::RevocationStrategies::JTIMatcher
   #Simply put the JTIMatcher strategy relies on comparing the database persisted value
   # of the jti column for a user with the incoming jti value in the jwt payload
