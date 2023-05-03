@@ -19,7 +19,7 @@ This is because the project was written under my 4th semester at UCL, and reserv
   * Environment Variables:
     * This API is using local environment variables with the dot-env gem to authenticate with the database.
       To get it running, create a file named 'env' in the root folder.
-      Create two keys named 'DATABASE_USER' and 'DATABASE_PASSWORD', as values provide the relevant information. The user provided must have CRUD privileges along with being allowed to create tables.
+      Create two keys named 'DATABASE_USER' and 'DATABASE_PASSWORD', as values provide the relevant information. The user credentials provided must have CRUD privileges along with being allowed to create tables.
   * Caching:
     * Run rails dev:cache in the terminal to enable caching in development mode
   * Test configuration:
