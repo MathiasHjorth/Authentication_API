@@ -1,6 +1,6 @@
 # Authentication_API V. 1.0
 This is a minimal backend API project imitating a shopping app with user authentication capabilities. 
-The project is moderately aimed at Pentia Mobile's hiring test for backend developers. It includes many of the features asked for in the test, but also leaves out some along with providing some that weren't a part of the assignment.
+The project is mostly aimed at Pentia Mobile's hiring test for backend developers. It fulfills many of the requirements asked for in the test, but also leaves out some along with providing some that weren't a part of the assignment.
 This is because the project was written under my 4th semester at UCL, and reservations for what i found most relevant for my exams took precedence over what the hiring test wanted.
 
 * Ruby version
@@ -10,8 +10,10 @@ This is because the project was written under my 4th semester at UCL, and reserv
   * Authentication dependencies
     * Devise
     * Devise-jwt
-  * Fixes
-    * This API includes a fix to the session store error in Rails 7.0.4.3 using Devise in an API only project. The module is found in controllers/concerns and explains why it's needed.
+  * Database dependencies
+    * PG gem
+  * Fixes dependencies
+    * This API includes a fix to the session store error in Rails 7.0.4.3 using Devise in an API only project. The module is found in controllers/concerns and explains briefly why it's needed.
 
 * Configuration
   * Environment Variables:
@@ -20,7 +22,7 @@ This is because the project was written under my 4th semester at UCL, and reserv
       Create two keys named 'DATABASE_USER' and 'DATABASE_PASSWORD', as values provide the relevant information. The user provided must have CRUD privileges along with being allowed to create tables.
   * Caching:
     * Run rails dev:cache in the terminal to enable caching in development mode
-  * Tests:
+  * Test configuration:
     * You must setup the database test environment in database.yml to run tests
     * You must run the migrations for the test environment with db:migrate RAILS_ENV=test
 
@@ -34,5 +36,5 @@ This is because the project was written under my 4th semester at UCL, and reserv
     * Run db:seed
 
 * Testing
-  * This API is using Minitest
-  * Run the test suite via 'rails test test' in the terminal
+  * Testing of endpoints is done via Minitest
+  * Run the test suite for the controllers via 'rails test test/api/v1' in the terminal
