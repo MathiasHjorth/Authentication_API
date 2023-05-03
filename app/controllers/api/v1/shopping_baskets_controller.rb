@@ -1,5 +1,6 @@
 class Api::V1::ShoppingBasketsController < ApplicationController
   include JwtHelper
+  include AuthHelper
   before_action :authenticate_user!
   respond_to :json
 
@@ -8,7 +9,12 @@ class Api::V1::ShoppingBasketsController < ApplicationController
   def show
     @shopping_basket = ShoppingBasket.eager_load(:product).where(:user_id => current_user.id)
 
-    render json: @shopping_basket.as_json(include: :product, only: :quantity), status: 200
+    if @shopping_basket.any? then
+      render json: @shopping_basket.as_json(include: :product, only: :quantity), status: 200
+    else
+      render json: {status: 200, message: 'Shopping basket is empty'}, status: 200
+    end
+
   end
 
   #POST
@@ -61,13 +67,6 @@ class Api::V1::ShoppingBasketsController < ApplicationController
 
 
   private
-  #For successful authentication, the Authorization header must include a valid JWT token.
-  def authenticate_user!
-    unless current_user
-      render json: {status: 401, error_message: 'An active login session is required to access this endpoint'}, status: :unauthorized
-    end
-  end
-
   def basket_item_params
     params.require(:data).permit(:product_id,:quantity)
   end
