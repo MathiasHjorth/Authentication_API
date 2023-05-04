@@ -1,9 +1,9 @@
 # Authentication_API V. 1.0
-This is a minimal backend API project imitating a shopping app with user authentication capabilities. 
-The project is mostly aimed at Pentia Mobile's hiring test for backend developers. It fulfills many of the requirements asked for in the test, but also leaves out some along with providing some that weren't a part of the assignment.
-This is because the project was written under my 4th semester at UCL, and reservations for what i found most relevant for my exams took precedence over what the hiring test wanted.
+This is a minimal backend API project imitating a shopping app with user authentication capabilities via JWT-authentication. 
+The project is primarily aimed at Pentia Mobile's hiring test for backend developers. It fulfills many of the requirements asked for in the test, but also leaves out some along with providing some that weren't a part of the assignment.
+As the project was written during my 4th semester at UCL,some reservations were had for what i found most interesting in regards to my exams.
 
-The API's functionality and available endpoints are documented in the "Authentication_API V. 1.0 Pentia" document.
+Endpoints available are documented in the "Authentication_API V. 1.0 Documentation" document.
 
 * Ruby version
   * Ruby 3.2.2
@@ -14,6 +14,8 @@ The API's functionality and available endpoints are documented in the "Authentic
     * Devise-jwt
   * Database dependencies
     * PG gem
+  * Testing dependencies
+    * Minitest
   * Fixes dependencies
     * This API includes a fix to the session store error in Rails 7.0.4.3 using Devise in an API only project. The module is found in controllers/concerns and explains briefly why it's needed.
 
