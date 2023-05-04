@@ -7,7 +7,7 @@ class Api::V1::ShoppingBasketsController < ApplicationController
   #GET
   # gets the user's shopping basket
   def show
-    @shopping_basket = ShoppingBasket.eager_load(:product).where(:user_id => current_user.id)
+    @shopping_basket = ShoppingBasket.where(:user_id => current_user.id)
 
     if @shopping_basket.any? then
       render json: @shopping_basket.as_json(include: :product, only: :quantity), status: 200

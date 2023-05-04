@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  #User
-  #overwriting out the box devise routes to our own custom controllers:
+  #Users
   devise_for :users,
              path: '',
              path_names: {
@@ -11,15 +10,17 @@ Rails.application.routes.draw do
              },
              controllers: {sessions: 'api/v1/sessions', registrations: 'api/v1/users'}
 
-  #Product
+  #Products
   get 'api/v1/products', to: 'api/v1/products#index'
 
-  #Shopping_basket
+  #Shopping_baskets
   get 'api/v1/shopping_baskets', to: 'api/v1/shopping_baskets#show'
   post 'api/v1/shopping_baskets', to: 'api/v1/shopping_baskets#create'
   delete 'api/v1/shopping_baskets/delete/all', to: 'api/v1/shopping_baskets#destroy'
   delete 'api/v1/shopping_baskets/delete/:product_id', to: 'api/v1/shopping_baskets#delete'
 
-
+  #Orders
+  get 'api/v1/orders', to: 'api/v1/orders#index'
+  post 'api/v1/orders', to: 'api/v1/orders#create'
 
 end
