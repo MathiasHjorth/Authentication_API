@@ -23,7 +23,7 @@ class Api::V1::ShoppingBasketsController < ApplicationController
     @basket_item = ShoppingBasket.new({ user_id: current_user.id, product_id: basket_item_params[:product_id], quantity: basket_item_params[:quantity]})
 
     if in_basket?(@basket_item)
-      #this could make sense to isolate in a seperate method instead of in the create action
+      #this should be moved to a separate method
       @item_to_update = ShoppingBasket.find_by(user_id: current_user.id, product_id: @basket_item[:product_id])
       @item_to_update.update(:quantity => @item_to_update.quantity += @basket_item[:quantity].to_i)
 
