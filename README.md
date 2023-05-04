@@ -1,25 +1,44 @@
-# README
+# Authentication_API V. 1.0
+This is a minimal backend API project imitating a shopping app with user authentication capabilities via JWT-authentication. 
+The project is primarily aimed at Pentia Mobile's hiring test for backend developers. It fulfills many of the requirements asked for in the test, but also leaves out some along with providing some that weren't a part of the assignment.
+As the project was written during my 4th semester at UCL,some reservations were had for what i found most interesting in regards to my exams.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+Endpoints available are documented in the "Authentication_API V. 1.0 Documentation" document.
 
 * Ruby version
+  * Ruby 3.2.2
 
 * System dependencies
+  * Authentication dependencies
+    * Devise
+    * Devise-jwt
+  * Database dependencies
+    * PG gem
+  * Testing dependencies
+    * Minitest
+  * Fixes dependencies
+    * This API includes a fix to the session store error in Rails 7.0.4.3 using Devise in an API only project. The module is found in controllers/concerns and explains briefly why it's needed.
 
 * Configuration
-  It might be necessary to run the command rails dev:cache, to re-enable caching in development mode.
+  * Environment Variables:
+    * This API is using local environment variables with the dot-env gem to authenticate with the database.
+      To get it running, create a file named 'env' in the root folder.
+      Create two keys named 'DATABASE_USER' and 'DATABASE_PASSWORD', as values provide the relevant information. The user credentials provided must have CRUD privileges along with being allowed to create tables.
+  * Caching:
+    * Run rails dev:cache in the terminal to enable caching in development mode
+  * Test configuration:
+    * You must setup the database test environment in database.yml to run tests
+    * You must run the migrations for the test environment with db:migrate RAILS_ENV=test
+
+* Database
+  * Postgres v. 15.0
 
 * Database creation
+  * After having set up the environment variables under the Configuration steps
+    * Run db:create
+    * Run db:migrate
+    * Run db:seed
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Testing
+  * Testing of endpoints is done via Minitest
+  * Run the test suite for the controllers via 'rails test test/api/v1' in the terminal
