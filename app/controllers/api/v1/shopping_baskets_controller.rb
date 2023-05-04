@@ -31,7 +31,7 @@ class Api::V1::ShoppingBasketsController < ApplicationController
     end
 
     if @basket_item.save
-      render json: {status: 201, message: 'Product successfully added to basket'}, status: 201
+      render json: {status: 200, message: 'Product successfully added to basket'}, status: 200
     else
       render json: {status: 500, message: 'Unknown error'}, status: 500 #not handled properly...
     end

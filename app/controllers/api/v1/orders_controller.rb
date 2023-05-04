@@ -46,7 +46,7 @@ class Api::V1::OrdersController < ApplicationController
     end
 
     ShoppingBasket.destroy_by(user_id: current_user.id)
-    render json: {status: 200, message: "Successfully checked out shopping basked. Order was created order number #{@new_order_number}"}, status: 200
+    render json: {status: 200, message: "Successfully checked out shopping basket. Order was created with order number #{@new_order_number}"}, status: 200
 
   end
 
