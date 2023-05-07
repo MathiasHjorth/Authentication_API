@@ -1,7 +1,7 @@
 # Authentication_API V. 1.0
 This is a minimal backend API project imitating a shopping app with user authentication capabilities via JWT-authentication. 
 The project is primarily aimed at Pentia Mobile's hiring test for backend developers. It fulfills many of the requirements asked for in the test, but also leaves out some along with providing some that weren't a part of the assignment.
-As the project was written during my 4th semester at UCL,some reservations were had for what i found most interesting in regards to my exams.
+As the project was written during my 4th semester at UCL, some reservations were had for exams purposes.
 
 Endpoints available are documented in the "Authentication_API V. 1.0 Documentation" document.
 
